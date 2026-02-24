@@ -1,0 +1,135 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/notify",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1f5b5983-7042-41ea-8b1d-8d992bf5d72b",
+      "name": "Webhook",
+      "webhookId": "090415a7-4a29-4db7-9bd5-b4449d7bf9ee"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "19324451-e51e-49f4-82d4-3d40be5257ce",
+              "leftValue": "=\n{{ $json.body.email }}",
+              "rightValue": "=^[a-zA-Z0-9_%.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "0aefce8f-4b17-4191-aad1-aed90711c218",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "Alonsopinto900@gmail.com",
+        "subject": "Nuevos Datos Recibidos En N8N",
+        "message": "=<!DOCTYPE html>\n<html lang=\"es\">\n<head>\n    <meta charset=\"UTF-8\">\n</head>\n<body style=\"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; margin: 0; padding: 20px;\">\n    <div style=\"max-width: 600px; margin: 0 auto; padding: 30px; border-left: 4px solid #2196F3;\">\n        <h2 style=\"color: #333333; margin-top: 0;\">Mensaje recibido</h2>\n        <div style=\"background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;\">\n            <p style=\"color: #555555; font-size: 15px; line-height: 1.8; margin: 0; white-space: pre-wrap;\">{{ $('Webhook').item.json.body.mensaje }}</p>\n        </div>\n        <p style=\"color: #999999; font-size: 12px; margin-top: 30px;\">\n            <strong>Fecha:</strong> {{ $now.toFormat('dd/MM/yyyy HH:mm') }}\n        </p>\n    </div>\n</body>\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        432,
+        -160
+      ],
+      "id": "6dc22c73-3fa3-4110-b633-9b86ed30ee90",
+      "name": "Send a message",
+      "webhookId": "c2ec365e-94be-47b2-8cf0-564927273e52",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "0SnLjTVQoASJ1Ucz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        96
+      ],
+      "id": "d7fd1cb0-820d-49bb-b51b-f6cc4a87a49a",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "b0650d1c-bdcd-487d-837b-2386831456cc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "705982195983a5100061d9ecc076c07c7bfa3da85d3a801d07e73e12c5faa1dd"
+  },
+  "id": "sbb3tZTxC19i7XCt",
+  "tags": []
+}
