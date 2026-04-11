@@ -4,6 +4,7 @@ GITHU_USER:ArmandoAlonsoPintoAntonio
 EMAIL: AAPINTO-2025A@CORHUILA.EDU.CO
 CODE_ORANIZATION: Code-Corhuila
 -->
+
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8bdde09a-4427-4fb1-9082-1e8e29c1607f" />
 <h1 align="center">👨‍💻 Armando Alonso Pinto Antonio</h1>
 
@@ -14,6 +15,10 @@ CODE_ORANIZATION: Code-Corhuila
 
 <p align="center">
   📍 Neiva, Huila, Colombia
+</p>
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=andresitow-her&label=Profile%20views&style=flat-square&color=brightgreen%22 alt="Profile views">
 </p>
 
 ---
@@ -116,7 +121,8 @@ https://www.linkedin.com/in/armando-alonso-pinto-antonio-27b11a350
     <img src="https://img.shields.io/badge/Teléfono-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/>
   </a>
 </p>
-
+## Repositorio institucional
+Este repositorio está asociado a la organización **code-corhuila**.
 ---
 
 <p align="center">
